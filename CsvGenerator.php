@@ -34,9 +34,11 @@
 		    	foreach ($itensPedido as $keyed => $itemPedido) {
 
                     $precoCustoFormatado = NumberOperationUtils::formatarMoeda((float)$itemPedido->item->precocusto);
+                    $totalVendaFormatado = NumberOperationUtils::formatarMoeda((float)$pedido->pedido->totalvenda);
                     $dadosArquivo[] = [
                         $pedido->pedido->numero,
                         date($pedido->pedido->data),
+                        $totalVendaFormatado,
                         $precoCustoFormatado,
                         utf8_decode($pedido->pedido->situacao)
                     ];
@@ -50,7 +52,8 @@
 		private function getColunasCsv(): array {
 			$colunasCsv = [
 				utf8_decode("Número do pedido"), 
-				"Data", 
+				"Data",
+                utf8_decode("Total de venda"),
 				utf8_decode("Preço do produto"),
 				utf8_decode("Situação do pedido")
 			];
