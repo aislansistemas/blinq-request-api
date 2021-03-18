@@ -3,16 +3,20 @@
 	require_once "./CsvGenerator.php";
 	require_once "./Helpers/DefinitionRequestLojaApi.php";
 	require_once "Enum/NomeLojaEnum.php";
+	require_once "DTO/RequestApiDTO.php";
 
 	if(!empty($_GET)) {
 		try {
 
-            $requestApi = DefinitionRequestLojaApi::verificarRequestApiLoja($_GET['nome_loja']);
-            $pedidos = $requestApi->getPedidosApi();
+            $requestApiDTO = new RequestApiDTO();
+            $requestApiDTO->createFromArray($_GET);
 
-            (new CsvGenerator())->gerarCsv($pedidos, NomeLojaEnum::getNomeLojaByEnum($_GET['nome_loja']));
+            $requestApi = DefinitionRequestLojaApi::verificarRequestApiLoja($requestApiDTO->getNomeLoja());
+            $pedidos = $requestApi->getPedidosApi($requestApiDTO);
+
+            (new CsvGenerator())->gerarCsv($pedidos, NomeLojaEnum::getNomeLojaByEnum($requestApiDTO->getNomeLoja()));
 
         } catch (Exception $exp) {
-            echo $exp->getMessage();
+            header("Location: index.php?error={$exp->getMessage()}");
         }
 	}

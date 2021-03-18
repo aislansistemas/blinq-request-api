@@ -1,6 +1,7 @@
 <?php
 
+require_once "DTO/RequestApiDTO.php";
 
 interface IRequestApiStrategy {
-    function getPedidos(): array;
+    function getPedidos(RequestApiDTO $requestApiDTO): array;
 }

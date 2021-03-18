@@ -1,6 +1,7 @@
 <?php
 
 require_once "Interface/IRequestApiStrategy.php";
+require_once "DTO/RequestApiDTO.php";
 
 class RequestApi {
 
@@ -10,7 +11,7 @@ class RequestApi {
         $this->requestApi = $requestApiStrategy;
     }
 
-    public function getPedidosApi():array {
-        return $this->requestApi->getPedidos();
+    public function getPedidosApi(RequestApiDTO $requestApiDTO):array {
+        return $this->requestApi->getPedidos($requestApiDTO);
     }
 }
