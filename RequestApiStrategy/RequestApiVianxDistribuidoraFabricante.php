@@ -9,7 +9,7 @@ final class RequestApiVianxDistribuidoraFabricante extends RequestApiAbstract {
     private const API_SECRET_KEY = "f623f323cca6d3e73c115e957b970589d3487eff35fdbf5258eb53f7b04f61ea2f1a7f0f";
 
     public function getPedidos(RequestApiDTO $requestApiDTO): array {
-        $urlPedidos = $this->montarUrlRequestApi($this->getFilters($requestApiDTO));
+        $urlPedidos = $this->montarUrlPedidosRequestApi($this->getFilters($requestApiDTO));
         $ch = curl_init($urlPedidos);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);

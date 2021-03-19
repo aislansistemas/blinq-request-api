@@ -9,7 +9,7 @@ final class RequestApiVivianComercioEletronico extends RequestApiAbstract {
     private const API_SECRET_KEY = "61d28bff43eb1fea4cc578fd4aff7e141d109e5bde0e756a408f347b793f36deaf63b67a";
 
     public function getPedidos(RequestApiDTO $requestApiDTO): array {
-        $urlPedidos = $this->montarUrlRequestApi($this->getFilters($requestApiDTO));
+        $urlPedidos = $this->montarUrlPedidosRequestApi($this->getFilters($requestApiDTO));
         $ch = curl_init($urlPedidos);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
