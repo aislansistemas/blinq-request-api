@@ -7,9 +7,16 @@ class NomeLojaEnum {
 
     public static function getComboEnum(): array {
         $nomeLoja = [
-            ['nome_loja' => 'Vianx Destribuidora e Fabricante', 'value' => self::$RequestApiVianxDistribuidoraFabricante],
-            ['nome_loja' => 'Vivian Comércio de Eletrônico', 'value' => self::$RequestApiVivianComercioEletronico]
+            [
+                'nome_loja' => 'Vianx Destribuidora e Fabricante',
+                'value' => self::$RequestApiVianxDistribuidoraFabricante
+            ],
+            [
+                'nome_loja' => 'Vivian Comércio de Eletrônico',
+                'value' => self::$RequestApiVivianComercioEletronico
+            ]
         ];
+
         return $nomeLoja;
     }
 
@@ -23,4 +30,5 @@ class NomeLojaEnum {
 
         return $nomeLoja;
     }
+
 }

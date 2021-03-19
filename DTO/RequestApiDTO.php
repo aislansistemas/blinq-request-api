@@ -9,7 +9,7 @@ class RequestApiDTO {
         return $this->data->format($format);
     }
 
-    public function setData($data){
+    public function setData($data) {
         $this->data = DateTime::createFromFormat('Y-m-d', $data);
     }
 

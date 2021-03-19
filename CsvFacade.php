@@ -14,7 +14,8 @@
             $requestApi = DefinitionRequestLojaApi::verificarRequestApiLoja($requestApiDTO->getNomeLoja());
             $pedidos = $requestApi->getPedidosApi($requestApiDTO);
 
-            (new CsvGenerator())->gerarCsv($pedidos, NomeLojaEnum::getNomeLojaByEnum($requestApiDTO->getNomeLoja()));
+            $nomeLoja = NomeLojaEnum::getNomeLojaByEnum($requestApiDTO->getNomeLoja());
+            (new CsvGenerator())->gerarCsv($pedidos, $nomeLoja);
 
         } catch (Exception $exp) {
             header("Location: index.php?error={$exp->getMessage()}");
