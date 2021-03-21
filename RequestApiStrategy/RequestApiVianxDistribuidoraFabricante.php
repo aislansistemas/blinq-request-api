@@ -3,10 +3,9 @@
 require_once "Interface/IRequestApiStrategy.php";
 require_once "DTO/RequestApiDTO.php";
 require_once "RequestApiAbstract.php";
+require_once "Core/EnvOperation.php";
 
 final class RequestApiVianxDistribuidoraFabricante extends RequestApiAbstract {
-
-    private const API_SECRET_KEY = "f623f323cca6d3e73c115e957b970589d3487eff35fdbf5258eb53f7b04f61ea2f1a7f0f";
 
     public function getPedidos(RequestApiDTO $requestApiDTO): array {
         $urlPedidos = $this->montarUrlPedidosRequestApi($this->getFilters($requestApiDTO));
@@ -33,6 +32,10 @@ final class RequestApiVianxDistribuidoraFabricante extends RequestApiAbstract {
     }
 
     protected function montarUrlPedidosRequestApi(string $filters): string {
-        return $this->urlPedidosApi . self::API_SECRET_KEY . $filters;
+        return $this->urlPedidosApi . $this->getApiSecretKey() . $filters;
+    }
+
+    protected function getApiSecretKey(): string {
+        return EnvOperation::getEnvByKeyValue("API_KEY_VIANX_DISTRIBUIDORA_FABRICANTE");
     }
 }

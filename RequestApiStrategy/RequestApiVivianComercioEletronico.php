@@ -3,10 +3,9 @@
 require_once "Interface/IRequestApiStrategy.php";
 require_once "DTO/RequestApiDTO.php";
 require_once "RequestApiAbstract.php";
+require_once "Core/EnvOperation.php";
 
 final class RequestApiVivianComercioEletronico extends RequestApiAbstract {
-
-    private const API_SECRET_KEY = "61d28bff43eb1fea4cc578fd4aff7e141d109e5bde0e756a408f347b793f36deaf63b67a";
 
     public function getPedidos(RequestApiDTO $requestApiDTO): array {
         $urlPedidos = $this->montarUrlPedidosRequestApi($this->getFilters($requestApiDTO));
@@ -33,6 +32,10 @@ final class RequestApiVivianComercioEletronico extends RequestApiAbstract {
     }
 
     protected function montarUrlPedidosRequestApi(string $filters): string {
-        return $this->urlPedidosApi . self::API_SECRET_KEY . $filters;
+        return $this->urlPedidosApi . $this->getApiSecretKey() . $filters;
+    }
+
+    protected function getApiSecretKey(): string {
+        return EnvOperation::getEnvByKeyValue("API_KEY_VIVIAN_COMERCIO_ELETRONICO");
     }
 }

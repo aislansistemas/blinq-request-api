@@ -8,4 +8,5 @@ abstract class RequestApiAbstract implements IRequestApiStrategy {
 
     protected abstract function getFilters(RequestApiDTO $requestApiDTO): string;
     protected abstract function montarUrlPedidosRequestApi(string $filters): string;
+    protected abstract function getApiSecretKey(): string;
 }
