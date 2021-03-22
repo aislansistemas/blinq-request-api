@@ -17,9 +17,7 @@ final class RequestApiVivianComercioEletronico extends RequestApiAbstract {
         if(empty($results['retorno']->pedidos))
             throw new Exception("Nenhum registro encontrado para a data informada!");
 
-        $pedidos = $results['retorno']->pedidos;
-
-        return $pedidos;
+        return $results['retorno']->pedidos;
     }
 
     protected function getFilters(RequestApiDTO $requestApiDTO): string {
