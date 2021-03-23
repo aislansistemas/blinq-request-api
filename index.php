@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Csv Generetor</title>
 	<!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<style type="text/css">
@@ -41,7 +41,9 @@
                             <label>Selecione a loja para gerar o CSV:</label>
                             <select class="form-control form-control-lg" name="nome_loja" required>
                                 <?php foreach (NomeLojaEnum::getComboEnum() as $nomeLoja) { ?>
-                                    <option value="<?= $nomeLoja['value'] ?>"><?= $nomeLoja['nome_loja'] ?></option>
+                                    <option value="<?= $nomeLoja['value'] ?>">
+                                        <?= $nomeLoja['nome_loja'] ?>
+                                    </option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -65,7 +67,7 @@
         <div class="d-flex justify-content-center bg-light p-2 mt-5 mb-5" style="border-radius: 12px; box-shadow: 2px 5px 10px #808080">
             <div class="col-md-12">
                 <h5 class="text-center text-secondary">
-                    <small><i>Obs a api do blinq tem limit de 100 registros por consulta!</i></small>
+                    <small><i>Obs, a api do blinq tem limite de 100 registros por consulta!</i></small>
                 </h5>
             </div>
         </div>

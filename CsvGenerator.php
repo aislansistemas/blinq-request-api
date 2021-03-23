@@ -32,18 +32,16 @@
 		    	}
 				$itensPedido = (array)$pedido->pedido->itens;
 		    	foreach ($itensPedido as $keyed => $itemPedido) {
-
-                    $precoCustoFormatado = NumberOperationUtils::formatarMoeda((float)$itemPedido->item->precocusto);
-                    $totalVendaFormatado = NumberOperationUtils::formatarMoeda((float)$pedido->pedido->totalvenda);
-                    $dadosArquivo[] = [
-                        $pedido->pedido->numero,
-                        date($pedido->pedido->data),
-                        $totalVendaFormatado,
-                        $precoCustoFormatado,
-                        utf8_decode($pedido->pedido->situacao)
-                    ];
                 }
-
+                $precoCustoFormatado = NumberOperationUtils::formatarMoeda((float)$itemPedido->item->precocusto);
+                $totalVendaFormatado = NumberOperationUtils::formatarMoeda((float)$pedido->pedido->totalvenda);
+                $dadosArquivo[] = [
+                    $pedido->pedido->numero,
+                    date($pedido->pedido->data),
+                    $totalVendaFormatado,
+                    $precoCustoFormatado,
+                    utf8_decode($pedido->pedido->situacao)
+                ];
 		    }
 
 		    return $dadosArquivo;
